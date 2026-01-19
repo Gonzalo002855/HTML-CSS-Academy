@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aprende HTML & CSS | Desarrollo Web Profesional</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
             margin: 0;
@@ -1455,25 +1455,34 @@ p {
             }
         }
 
-        function updatePreview() {
-            const html = document.getElementById('htmlCode').value;
-            const css = document.getElementById('cssCode').value;
-            const preview = document.getElementById('previewFrame');
-            
-            const fullHTML = html.replace('</head>', `<style>${css}</style></head>`);
-            preview.innerHTML = fullHTML;
-        }
+        function isRealHTML(html) {
+  return /<[^>]+>/.test(html);
+}
 
-        // Auto-actualizar vista previa mientras escribes
-        document.addEventListener('DOMContentLoaded', () => {
-            initExercises();
-            
-            const htmlCode = document.getElementById('htmlCode');
-            const cssCode = document.getElementById('cssCode');
-            
-            htmlCode.addEventListener('input', updatePreview);
-            cssCode.addEventListener('input', updatePreview);
-        });
+
+function updatePreview() {
+  const html = document.getElementById('htmlCode').value;
+  const css = document.getElementById('cssCode').value;
+  const preview = document.getElementById('previewFrame');
+
+  // 🚫 Si no hay HTML real, NO renderizar
+  if (!isRealHTML(html)) {
+    preview.innerHTML = `
+      <div style="padding: 2rem; color: #888; text-align: center; font-family: Arial;">
+        ⚠️ Escribe código HTML real para ver la vista previa
+      </div>
+    `;
+    return;
+  }
+
+  const fullHTML = html.replace(
+    '</head>',
+    `<style>${css}</style></head>`
+  );
+
+  preview.innerHTML = fullHTML;
+}
+
 
         function checkExercise() {
             if (!currentExercise) return;
