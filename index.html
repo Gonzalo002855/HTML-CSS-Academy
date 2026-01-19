@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <!-- Cambio de prueba 18/01/2026 -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aprende HTML & CSS | Desarrollo Web Profesional</title>
@@ -865,7 +864,7 @@
         <a href="#html" onclick="showSection('html')" class="cta-button">Comenzar Ahora</a>
     </div>
 
-    <!-- SECCIÓN INICIO -->
+
     <div id="inicio" class="section active">
         <div class="container">
             <h2 class="section-title">Bienvenido a tu Academia de Desarrollo Web</h2>
@@ -1289,7 +1288,7 @@ p {
 
 
     <script>
-// DATOS DE LOS EJERCICIOS
+
 const exercises = [
     {
         id: 1,
@@ -1394,11 +1393,11 @@ const exercises = [
     }
 ];
 
-// VARIABLES GLOBALES
+
 let currentExercise = null;
 let completedExercises = [];
 
-// FUNCIÓN PARA RENDERIZAR LA LISTA DE EJERCICIOS
+
 function renderExercises() {
     const exerciseList = document.getElementById('exerciseList');
     if (!exerciseList) return;
@@ -1426,7 +1425,7 @@ function renderExercises() {
     });
 }
 
-// FUNCIÓN PARA ABRIR UN EJERCICIO
+
 function openExercise(id) {
     currentExercise = exercises.find(ex => ex.id === id);
     if (!currentExercise) return;
@@ -1445,13 +1444,13 @@ function openExercise(id) {
     document.getElementById('workspace').classList.add('active');
 }
 
-// FUNCIÓN PARA CERRAR EL WORKSPACE
+
 function closeWorkspace() {
     document.getElementById('workspace').classList.remove('active');
     currentExercise = null;
 }
 
-// FUNCIÓN PARA CAMBIAR ENTRE PESTAÑAS HTML/CSS
+
 function switchTab(tab) {
     document.querySelectorAll('.editor-tab').forEach(t => t.classList.remove('active'));
     document.querySelectorAll('.editor-content').forEach(c => c.classList.remove('active'));
@@ -1465,13 +1464,12 @@ function switchTab(tab) {
     }
 }
 
-// FUNCIÓN PARA VERIFICAR SI HAY HTML REAL
+
 function isRealHTML(html) {
     const doc = new DOMParser().parseFromString(html, 'text/html');
     return doc.body.children.length > 0;
 }
 
-// FUNCIÓN PARA ACTUALIZAR LA VISTA PREVIA
 function updatePreview() {
     const html = document.getElementById('htmlCode').value;
     const css = document.getElementById('cssCode').value;
@@ -1486,7 +1484,7 @@ function updatePreview() {
         return;
     }
 
-    // Crear un iframe para aislar el CSS
+
     const iframe = document.createElement('iframe');
     iframe.style.width = '100%';
     iframe.style.height = '100%';
@@ -1497,7 +1495,7 @@ function updatePreview() {
     
     const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
     
-    // Construir el HTML completo con el CSS
+ 
     const fullHTML = `
         <!DOCTYPE html>
         <html>
@@ -1521,7 +1519,7 @@ function updatePreview() {
     iframeDoc.close();
 }
 
-// FUNCIÓN PARA VERIFICAR EL EJERCICIO
+
 function checkExercise() {
     if (!currentExercise) return;
     
@@ -1561,7 +1559,7 @@ function checkExercise() {
     }
 }
 
-// FUNCIÓN PARA CAMBIAR DE SECCIÓN
+
 function showSection(sectionId) {
     const sections = document.querySelectorAll('.section');
     sections.forEach(section => {
@@ -1578,7 +1576,7 @@ function showSection(sectionId) {
     });
 }
 
-// ACTUALIZAR PREVIEW EN TIEMPO REAL
+
 document.addEventListener('DOMContentLoaded', function() {
     renderExercises();
     
@@ -1592,6 +1590,163 @@ document.addEventListener('DOMContentLoaded', function() {
         cssCode.addEventListener('input', updatePreview);
     }
 });
+
+
     </script>
+
+    <script>
+
+
+
+document.addEventListener('contextmenu', function(e) {
+    e.preventDefault();
+    return false;
+});
+
+
+document.addEventListener('keydown', function(e) {
+
+    if (e.keyCode === 123) {
+        e.preventDefault();
+        return false;
+    }
+
+    if (e.ctrlKey && e.shiftKey && e.keyCode === 73) {
+        e.preventDefault();
+        return false;
+    }
+
+    if (e.ctrlKey && e.shiftKey && e.keyCode === 74) {
+        e.preventDefault();
+        return false;
+    }
+
+    if (e.ctrlKey && e.keyCode === 85) {
+        e.preventDefault();
+        return false;
+    }
+
+    if (e.ctrlKey && e.shiftKey && e.keyCode === 67) {
+        e.preventDefault();
+        return false;
+    }
+
+    if (e.ctrlKey && e.keyCode === 83) {
+        e.preventDefault();
+        return false;
+    }
+});
+
+
+let devtoolsOpen = false;
+const threshold = 160;
+
+const detectDevTools = () => {
+    const widthThreshold = window.outerWidth - window.innerWidth > threshold;
+    const heightThreshold = window.outerHeight - window.innerHeight > threshold;
+    
+    if (widthThreshold || heightThreshold) {
+        if (!devtoolsOpen) {
+            devtoolsOpen = true;
+            document.body.innerHTML = '<h1 style="text-align:center; margin-top:20%; color:#d63031;">⚠️ Acceso no autorizado detectado</h1>';
+        }
+    } else {
+        devtoolsOpen = false;
+    }
+};
+
+setInterval(detectDevTools, 500);
+
+
+setInterval(function() {
+    const before = new Date();
+    debugger;
+    const after = new Date();
+    if (after - before > 100) {
+        document.body.innerHTML = '<h1 style="text-align:center; margin-top:20%; color:#d63031;">⚠️ Consola de desarrollador detectada</h1>';
+    }
+}, 1000);
+
+
+document.addEventListener('selectstart', function(e) {
+    e.preventDefault();
+    return false;
+});
+
+
+document.addEventListener('copy', function(e) {
+    e.preventDefault();
+    return false;
+});
+
+
+document.addEventListener('dragstart', function(e) {
+    e.preventDefault();
+    return false;
+});
+
+
+document.addEventListener('keydown', function(e) {
+    if (e.ctrlKey && e.keyCode === 65) {
+        e.preventDefault();
+        return false;
+    }
+});
+
+
+setInterval(function() {
+    console.clear();
+}, 100);
+
+
+console.log = function() {};
+console.warn = function() {};
+console.error = function() {};
+console.info = function() {};
+console.debug = function() {};
+
+
+(function() {
+    const element = new Image();
+    Object.defineProperty(element, 'id', {
+        get: function() {
+            document.body.innerHTML = '<h1 style="text-align:center; margin-top:20%; color:#d63031;">⚠️ Inspección detectada</h1>';
+            throw new Error('DevTools detectadas');
+        }
+    });
+    console.log(element);
+})();
+
+
+window.addEventListener('beforeprint', function(e) {
+    e.preventDefault();
+    alert('La impresión está deshabilitada');
+    return false;
+});
+
+
+document.addEventListener('keydown', function(e) {
+
+    if (e.ctrlKey && e.keyCode === 80) {
+        e.preventDefault();
+        return false;
+    }
+});
+
+
+if (window.top !== window.self) {
+    window.top.location = window.self.location;
+}
+
+
+setTimeout(function() {
+    const mensaje = '%c¡ALTO!';
+    const estilo = 'color: red; font-size: 50px; font-weight: bold; text-shadow: 2px 2px 4px black;';
+    console.log(mensaje, estilo);
+    console.log('%cEsta es una función del navegador destinada a desarrolladores.', 'font-size: 20px;');
+    console.log('%cSi alguien te dijo que copiaras y pegaras algo aquí, es un fraude.', 'font-size: 18px; color: orange;');
+}, 1000);
+
+</script>
 </body>
 </html> 
