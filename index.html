@@ -847,15 +847,16 @@
         <nav>
             <div class="logo">
                 <i class="fas fa-code"></i>
-                HTML & CSS Academy
+                Programming Academy
             </div>
-            <ul class="nav-links">
-                <li><a href="#inicio" onclick="showSection('inicio')">Inicio</a></li>
-                <li><a href="#html" onclick="showSection('html')">HTML</a></li>
-                <li><a href="#css" onclick="showSection('css')">CSS</a></li>
-                <li><a href="#ejercicios" onclick="showSection('ejercicios')">Ejercicios</a></li>
-                <li><a href="#proyectos" onclick="showSection('proyectos')">Proyectos</a></li>
-            </ul>
+<ul class="nav-links">
+    <li><a href="#inicio" onclick="showSection('inicio')">Inicio</a></li>
+    <li><a href="#html" onclick="showSection('html')">HTML</a></li>
+    <li><a href="#css" onclick="showSection('css')">CSS</a></li>
+    <li><a href="#javascript" onclick="showSection('javascript')">JavaScript</a></li>
+    <li><a href="#ejercicios" onclick="showSection('ejercicios')">Ejercicios</a></li>
+    <li><a href="#proyectos" onclick="showSection('proyectos')">Proyectos</a></li>
+</ul>
         </nav>
     </header>
 
@@ -872,8 +873,8 @@
             
             <div class="stats">
                 <div class="stat-box">
-                    <div class="stat-number">2</div>
-                    <div class="stat-label">Tecnologías Core</div>
+<div class="stat-number">3</div>
+<div class="stat-label">Tecnologías Core</div>
                 </div>
                 <div class="stat-box">
                     <div class="stat-number" id="completedCount">0</div>
@@ -890,10 +891,15 @@
                     <h3><i class="fas fa-file-code"></i> HTML - Estructura</h3>
                     <p>Aprende a crear la estructura de páginas web con HTML5. Desde etiquetas básicas hasta formularios y elementos semánticos.</p>
                 </div>
+                
                 <div class="card">
                     <h3><i class="fas fa-palette"></i> CSS - Diseño</h3>
                     <p>Domina el diseño y estilizado web con CSS3. Aprende layouts, animaciones, flexbox, grid y responsive design.</p>
                 </div>
+                <div class="card">
+    <h3><i class="fas fa-bolt"></i> JavaScript - Interactividad</h3>
+    <p>Dale vida a tus páginas con JavaScript. Aprende lógica de programación, manipulación del DOM y eventos interactivos.</p>
+</div>
                 <div class="card">
                     <h3><i class="fas fa-dumbbell"></i> Práctica Real</h3>
                     <p>Consolida tu aprendizaje con ejercicios prácticos y proyectos reales que podrás añadir a tu portafolio.</p>
@@ -903,49 +909,72 @@
     </div>
 
 <!-- SECCIÓN HTML -->
+<!-- Esta sección introduce el lenguaje HTML dentro del curso -->
 <div id="html" class="section">
+
+    <!-- Contenedor principal que centra el contenido y limita el ancho -->
     <div class="container">
+
+        <!-- Título principal de la sección HTML -->
         <h2 class="section-title">HTML — Lenguaje de Marcado</h2>
         
-        <!-- INTRO -->
+        <!-- INTRODUCCIÓN -->
+        <!-- Tarjeta inicial que explica qué es HTML -->
         <div class="card">
             <h3>¿Qué es HTML?</h3>
             <p>
-                HTML (HyperText Markup Language) es el lenguaje que se usa para
+                HTML (HyperText Markup Language) es el lenguaje que se utiliza para
                 <strong>crear la estructura</strong> de una página web.
             </p>
             <p>
-                Con HTML definimos títulos, textos, imágenes, enlaces y secciones.
-                HTML <strong>no da estilo</strong>, solo organiza el contenido.
+                Con HTML se definen los distintos elementos de una página, como títulos,
+                párrafos, imágenes, enlaces y secciones.
+            </p>
+            <p>
+                HTML <strong>no se encarga del diseño</strong>;
+                su función es organizar el contenido para que el navegador lo interprete correctamente.
             </p>
         </div>
 
         <!-- ETIQUETAS -->
-        <h3 style="margin-top: 3rem; color: #1e3c72;">¿Qué es una etiqueta?</h3>
+        <!-- Explicación del concepto de etiqueta HTML -->
+        <h3 style="margin-top: 3rem; color: #1e3c72;">
+            ¿Qué es una etiqueta?
+        </h3>
+
         <p>
             HTML funciona mediante <strong>etiquetas</strong>.
-            La mayoría tienen una apertura y un cierre.
+            Las etiquetas indican al navegador qué tipo de contenido se está mostrando.
+            La mayoría de ellas tienen una etiqueta de apertura y una de cierre.
         </p>
 
+        <!-- Ejemplos básicos de etiquetas -->
         <div class="code-example">
 <pre><code>&lt;p&gt;Este es un párrafo&lt;/p&gt;
 &lt;h1&gt;Este es un título&lt;/h1&gt;</code></pre>
         </div>
 
+        <!-- Explicación de etiquetas comunes -->
         <div class="card">
             <ul>
-                <li><strong>&lt;p&gt;</strong> → Párrafo</li>
-                <li><strong>&lt;h1&gt;</strong> → Título principal</li>
-                <li><strong>&lt;h2&gt; a &lt;h6&gt;</strong> → Subtítulos</li>
+                <li><strong>&lt;p&gt;</strong> → Se usa para escribir párrafos de texto</li>
+                <li><strong>&lt;h1&gt;</strong> → Representa el título principal de la página</li>
+                <li><strong>&lt;h2&gt; a &lt;h6&gt;</strong> → Se usan para subtítulos y jerarquía de contenido</li>
             </ul>
         </div>
 
         <!-- ESTRUCTURA -->
-        <h3 style="margin-top: 3rem; color: #1e3c72;">Estructura básica de una página</h3>
+        <!-- Estructura básica obligatoria de un documento HTML -->
+        <h3 style="margin-top: 3rem; color: #1e3c72;">
+            Estructura básica de una página
+        </h3>
+
         <p>
-            Toda página HTML tiene una estructura básica obligatoria.
+            Toda página HTML debe seguir una estructura básica.
+            Esta estructura permite que el navegador entienda correctamente el documento.
         </p>
 
+        <!-- Ejemplo completo de estructura HTML -->
         <div class="code-example">
 <pre><code>&lt;!DOCTYPE html&gt;
 &lt;html lang="es"&gt;
@@ -961,38 +990,56 @@
         </div>
 
         <!-- ETIQUETAS COMUNES -->
-        <h3 style="margin-top: 3rem; color: #1e3c72;">Etiquetas HTML más usadas</h3>
+        <!-- Listado de etiquetas HTML más utilizadas -->
+        <h3 style="margin-top: 3rem; color: #1e3c72;">
+            Etiquetas HTML más usadas
+        </h3>
 
         <div class="cards">
+
+            <!-- Tarjeta: etiquetas de texto -->
             <div class="card">
                 <h3>Texto</h3>
-                <p><strong>&lt;h1&gt;</strong> a <strong>&lt;h6&gt;</strong>: Títulos</p>
-                <p><strong>&lt;p&gt;</strong>: Párrafos</p>
-                <p><strong>&lt;strong&gt;</strong>: Texto importante</p>
+                <p><strong>&lt;h1&gt;</strong> a <strong>&lt;h6&gt;</strong>: Títulos y subtítulos</p>
+                <p><strong>&lt;p&gt;</strong>: Párrafos de texto</p>
+                <p><strong>&lt;strong&gt;</strong>: Texto importante o destacado</p>
                 <p><strong>&lt;em&gt;</strong>: Texto enfatizado</p>
             </div>
 
+            <!-- Tarjeta: enlaces e imágenes -->
             <div class="card">
                 <h3>Enlaces e imágenes</h3>
-                <p><strong>&lt;a&gt;</strong>: Enlaces</p>
-                <p><strong>&lt;img&gt;</strong>: Imágenes</p>
+                <p><strong>&lt;a&gt;</strong>: Enlaces a otras páginas</p>
+                <p><strong>&lt;img&gt;</strong>: Inserción de imágenes</p>
+
+                <!-- Ejemplo de enlace e imagen -->
                 <div class="code-example">
 <pre><code>&lt;a href="#"&gt;Haz clic&lt;/a&gt;
 &lt;img src="foto.jpg" alt="Imagen"&gt;</code></pre>
                 </div>
             </div>
 
+            <!-- Tarjeta: contenedores -->
             <div class="card">
                 <h3>Contenedores</h3>
                 <p><strong>&lt;div&gt;</strong>: Contenedor genérico</p>
-                <p><strong>&lt;section&gt;</strong>: Sección</p>
-                <p><strong>&lt;header&gt;</strong>: Cabecera</p>
+                <p><strong>&lt;section&gt;</strong>: Sección de contenido</p>
+                <p><strong>&lt;header&gt;</strong>: Cabecera de la página o sección</p>
                 <p><strong>&lt;footer&gt;</strong>: Pie de página</p>
             </div>
+
         </div>
 
         <!-- LISTAS -->
-        <h3 style="margin-top: 3rem; color: #1e3c72;">Listas en HTML</h3>
+        <!-- Explicación de listas en HTML -->
+        <h3 style="margin-top: 3rem; color: #1e3c72;">
+            Listas en HTML
+        </h3>
+
+        <p>
+            Las listas se utilizan para mostrar elementos relacionados entre sí.
+            La etiqueta <strong>&lt;ul&gt;</strong> crea una lista sin orden.
+        </p>
 
         <div class="code-example">
 <pre><code>&lt;ul&gt;
@@ -1003,22 +1050,30 @@
         </div>
 
         <!-- EJERCICIO -->
-        <h3 style="margin-top: 3rem; color: #1e3c72;">Ejercicio práctico</h3>
+        <!-- Práctica final para reforzar conceptos -->
+        <h3 style="margin-top: 3rem; color: #1e3c72;">
+            Ejercicio práctico
+        </h3>
+
         <div class="card">
-            <p>Crea una página HTML que tenga:</p>
+            <p>
+                Crea una página HTML que incluya los siguientes elementos:
+            </p>
             <ul>
-                <li>Un título con el nombre <strong>que tu quieras</strong></li>
+                <li>Un título con el nombre que tú elijas</li>
                 <li>Un párrafo de presentación</li>
                 <li>Una lista con tres hobbies</li>
                 <li>Un enlace</li>
             </ul>
             <p>
-                Este ejercicio te ayuda a dominar la estructura básica de HTML.
+                Este ejercicio refuerza el uso de etiquetas, estructura
+                y organización del contenido en HTML.
             </p>
         </div>
 
     </div>
 </div>
+
 
 
     <!-- SECCIÓN EJERCICIOS -->
@@ -1068,31 +1123,380 @@
         </div>
     </div>
 
-    <!-- SECCIÓN CSS -->
-<div id="css" class="section">
+    <!-- SECCIÓN JAVASCRIPT -->
+<div id="javascript" class="section">
     <div class="container">
+        <h2 class="section-title">JavaScript — Dale vida a tus páginas</h2>
+
+        <div class="card">
+            <h3><i class="fas fa-bolt"></i> ¿Qué es JavaScript?</h3>
+            <p>
+                JavaScript es el lenguaje de programación que permite añadir
+                <strong>interactividad y comportamiento dinámico</strong> a las páginas web.
+            </p>
+            <p>
+                Mientras HTML define la estructura y CSS el diseño,
+                <strong>JavaScript controla lo que sucede cuando el usuario interactúa</strong>
+                con la página: clics, formularios, animaciones, peticiones a servidores y mucho más.
+            </p>
+            <p>
+                Es el tercer pilar del desarrollo web y el lenguaje de programación
+                más usado del mundo.
+            </p>
+        </div>
+
+        <h3 style="margin-top: 3rem; color: #1e3c72;">
+            <i class="fas fa-code"></i> Sintaxis básica
+        </h3>
+
+        <p>
+            JavaScript se escribe dentro de etiquetas <code>&lt;script&gt;</code>
+            o en archivos externos con extensión <code>.js</code>
+        </p>
+
+        <div class="code-example">
+<pre><code>&lt;script&gt;
+  console.log("¡Hola desde JavaScript!");
+  alert("Bienvenido a JS");
+&lt;/script&gt;</code></pre>
+        </div>
+
+        <h3 style="margin-top: 3rem; color: #1e3c72;">
+            <i class="fas fa-box"></i> Variables
+        </h3>
+
+        <p>
+            Las variables permiten almacenar información para usarla después.
+            En JavaScript moderno se usan <code>let</code> y <code>const</code>.
+        </p>
+
+        <div class="code-example">
+<pre><code>let nombre = "Gonzalo";
+let edad = 25;
+const PI = 3.14159;
+
+console.log(nombre); // Muestra: Gonzalo
+console.log(edad);   // Muestra: 25</code></pre>
+        </div>
+
+        <div class="card">
+            <ul>
+                <li><strong>let</strong> → Para variables que pueden cambiar</li>
+                <li><strong>const</strong> → Para valores constantes que no cambian</li>
+                <li><strong>var</strong> → Forma antigua, evitar en código moderno</li>
+            </ul>
+        </div>
+
+        <h3 style="margin-top: 3rem; color: #1e3c72;">
+            <i class="fas fa-list"></i> Tipos de datos
+        </h3>
+
+        <div class="code-example">
+<pre><code>// Números
+let numero = 42;
+
+// Textos (strings)
+let texto = "Hola Mundo";
+
+// Booleanos
+let esVerdadero = true;
+
+// Arrays (listas)
+let frutas = ["manzana", "pera", "uva"];
+
+// Objetos
+let persona = {
+  nombre: "Juan",
+  edad: 30
+};</code></pre>
+        </div>
+
+        <h3 style="margin-top: 3rem; color: #1e3c72;">
+            <i class="fas fa-project-diagram"></i> Funciones
+        </h3>
+
+        <p>
+            Las funciones son bloques de código reutilizables que realizan
+            una tarea específica.
+        </p>
+
+        <div class="code-example">
+<pre><code>// Declaración de función
+function saludar(nombre) {
+  return "Hola " + nombre;
+}
+
+// Llamada a la función
+let mensaje = saludar("María");
+console.log(mensaje); // Muestra: Hola María
+
+// Función flecha (moderna)
+const sumar = (a, b) => {
+  return a + b;
+};
+
+console.log(sumar(5, 3)); // Muestra: 8</code></pre>
+        </div>
+
+        <h3 style="margin-top: 3rem; color: #1e3c72;">
+            <i class="fas fa-code-branch"></i> Condicionales
+        </h3>
+
+        <p>
+            Los condicionales permiten ejecutar código solo si se cumple
+            una condición.
+        </p>
+
+        <div class="code-example">
+<pre><code>let edad = 18;
+
+if (edad >= 18) {
+  console.log("Eres mayor de edad");
+} else {
+  console.log("Eres menor de edad");
+}
+
+// Operador ternario (forma corta)
+let mensaje = edad >= 18 ? "Mayor" : "Menor";
+console.log(mensaje);</code></pre>
+        </div>
+
+        <h3 style="margin-top: 3rem; color: #1e3c72;">
+            <i class="fas fa-sync"></i> Bucles
+        </h3>
+
+        <p>
+            Los bucles permiten repetir código múltiples veces.
+        </p>
+
+        <div class="code-example">
+<pre><code>// Bucle for
+for (let i = 0; i < 5; i++) {
+  console.log("Número: " + i);
+}
+
+// Bucle para arrays
+let colores = ["rojo", "verde", "azul"];
+
+colores.forEach(color => {
+  console.log(color);
+});</code></pre>
+        </div>
+
+        <h3 style="margin-top: 3rem; color: #1e3c72;">
+            <i class="fas fa-sitemap"></i> Manipulación del DOM
+        </h3>
+
+        <p>
+            El DOM (Document Object Model) permite a JavaScript interactuar
+            con el HTML de la página.
+        </p>
+
+        <div class="cards">
+            <div class="card">
+                <h3>Seleccionar elementos</h3>
+                <div class="code-example">
+<pre><code>// Por ID
+let titulo = document.getElementById("titulo");
+
+// Por clase
+let botones = document.querySelectorAll(".boton");
+
+// Por etiqueta
+let parrafos = document.getElementsByTagName("p");</code></pre>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>Modificar contenido</h3>
+                <div class="code-example">
+<pre><code>// Cambiar texto
+titulo.textContent = "Nuevo título";
+
+// Cambiar HTML
+titulo.innerHTML = "&lt;strong&gt;Importante&lt;/strong&gt;";</code></pre>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>Modificar estilos</h3>
+                <div class="code-example">
+<pre><code>// Cambiar color
+titulo.style.color = "red";
+
+// Añadir clase CSS
+titulo.classList.add("destacado");</code></pre>
+                </div>
+            </div>
+        </div>
+
+        <h3 style="margin-top: 3rem; color: #1e3c72;">
+            <i class="fas fa-mouse-pointer"></i> Eventos
+        </h3>
+
+        <p>
+            Los eventos permiten que JavaScript responda a las acciones del usuario.
+        </p>
+
+        <div class="code-example">
+<pre><code>// Evento de clic
+let boton = document.getElementById("miBoton");
+
+boton.addEventListener("click", function() {
+  alert("¡Botón presionado!");
+});
+
+// Evento con función flecha
+boton.addEventListener("click", () => {
+  console.log("Clic detectado");
+});
+
+// Eventos comunes
+input.addEventListener("input", () => { /* cambio en input */ });
+form.addEventListener("submit", () => { /* envío de formulario */ });
+window.addEventListener("load", () => { /* página cargada */ });</code></pre>
+        </div>
+
+        <h3 style="margin-top: 3rem; color: #1e3c72;">
+            <i class="fas fa-star"></i> Ejemplo práctico completo
+        </h3>
+
+        <p>
+            Veamos un ejemplo que combina HTML, CSS y JavaScript
+            para crear un contador interactivo:
+        </p>
+
+        <div class="code-example">
+<pre><code>&lt;!-- HTML --&gt;
+&lt;div id="contador"&gt;
+  &lt;h2&gt;Contador: &lt;span id="numero"&gt;0&lt;/span&gt;&lt;/h2&gt;
+  &lt;button id="incrementar"&gt;+1&lt;/button&gt;
+  &lt;button id="decrementar"&gt;-1&lt;/button&gt;
+  &lt;button id="reset"&gt;Reset&lt;/button&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+// JavaScript
+let numero = 0;
+const display = document.getElementById("numero");
+
+document.getElementById("incrementar").addEventListener("click", () => {
+  numero++;
+  display.textContent = numero;
+});
+
+document.getElementById("decrementar").addEventListener("click", () => {
+  numero--;
+  display.textContent = numero;
+});
+
+document.getElementById("reset").addEventListener("click", () => {
+  numero = 0;
+  display.textContent = numero;
+});
+&lt;/script&gt;</code></pre>
+        </div>
+
+        <h3 style="margin-top: 3rem; color: #1e3c72;">
+            <i class="fas fa-stream"></i> Métodos útiles de arrays
+        </h3>
+
+        <div class="code-example">
+<pre><code>let numeros = [1, 2, 3, 4, 5];
+
+// map: transforma cada elemento
+let dobles = numeros.map(n => n * 2);
+// Resultado: [2, 4, 6, 8, 10]
+
+// filter: filtra elementos
+let mayores = numeros.filter(n => n > 3);
+// Resultado: [4, 5]
+
+// reduce: reduce a un solo valor
+let suma = numeros.reduce((total, n) => total + n, 0);
+// Resultado: 15
+
+// find: encuentra el primer elemento que cumple condición
+let encontrado = numeros.find(n => n > 3);
+// Resultado: 4</code></pre>
+        </div>
+
+        <h3 style="margin-top: 3rem; color: #1e3c72;">
+            <i class="fas fa-laptop-code"></i> Ejercicio práctico
+        </h3>
+
+        <div class="card">
+            <p>
+                Crea una página que contenga:
+            </p>
+            <ul>
+                <li>Un campo de texto para ingresar tu nombre</li>
+                <li>Un botón que al hacer clic muestre "Hola [nombre]"</li>
+                <li>Un segundo botón que cambie el color de fondo de la página</li>
+                <li>Un contador que muestre cuántas veces se ha cambiado el color</li>
+            </ul>
+            <p>
+                Este ejercicio combina selección de elementos, eventos,
+                manipulación del DOM y variables.
+            </p>
+        </div>
+
+        <div class="card" style="margin-top: 2rem; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white;">
+            <h3 style="color: white;"><i class="fas fa-lightbulb"></i> Consejos para aprender JavaScript</h3>
+            <ul style="color: rgba(255,255,255,0.95);">
+                <li>Practica escribiendo código todos los días, aunque sean 15 minutos</li>
+                <li>Usa console.log() constantemente para ver qué hace tu código</li>
+                <li>Empieza con proyectos pequeños y ve aumentando la complejidad</li>
+                <li>Lee mensajes de error con atención, te dicen exactamente qué falla</li>
+                <li>No memorices todo, aprende a buscar y entender la documentación</li>
+            </ul>
+        </div>
+
+    </div>
+</div>
+
+<!-- SECCIÓN CSS -->
+<!-- Esta sección introduce el lenguaje CSS dentro del curso -->
+<div id="css" class="section">
+
+    <!-- Contenedor general para limitar el ancho y centrar el contenido -->
+    <div class="container">
+
+        <!-- Título principal de la sección CSS -->
         <h2 class="section-title">CSS — Domina el diseño web</h2>
 
-        <!-- INTRO -->
+        <!-- INTRODUCCIÓN -->
+        <!-- Tarjeta explicativa inicial -->
         <div class="card">
             <h3>¿Qué es CSS?</h3>
             <p>
-                CSS (Cascading Style Sheets) es el lenguaje que se usa para diseñar páginas web.
-                Mientras HTML crea la estructura, <strong>CSS decide cómo se ve</strong>:
-                colores, tamaños, posiciones, animaciones y efectos visuales.
+                CSS (Cascading Style Sheets) es el lenguaje utilizado para definir el
+                aspecto visual de una página web.  
+                Mientras que HTML se encarga de crear la estructura y el contenido,
+                <strong>CSS controla cómo se muestra ese contenido</strong>.
             </p>
             <p>
-                Piensa en CSS como la ropa del HTML.  
-                El HTML es el cuerpo, el CSS es el estilo.
+                Con CSS puedes modificar colores, tamaños, márgenes, posiciones,
+                tipografías, animaciones y efectos visuales.
+            </p>
+            <p>
+                Una forma sencilla de entenderlo es esta:  
+                el HTML es la estructura de la página y el CSS es el diseño que la hace atractiva.
             </p>
         </div>
 
         <!-- SINTAXIS -->
-        <h3 style="margin-top: 3rem; color: #1e3c72;">Sintaxis básica de CSS</h3>
+        <!-- Explicación de cómo se escribe una regla CSS -->
+        <h3 style="margin-top: 3rem; color: #1e3c72;">
+            Sintaxis básica de CSS
+        </h3>
+
         <p>
-            Una regla CSS tiene tres partes: selector, propiedad y valor.
+            CSS funciona mediante reglas.  
+            Cada regla indica qué elemento se va a modificar y qué estilo se le va a aplicar.
         </p>
 
+        <!-- Ejemplo de una regla CSS -->
         <div class="code-example">
 <pre><code>p {
   color: blue;
@@ -1100,46 +1504,65 @@
 }</code></pre>
         </div>
 
+        <!-- Desglose de la regla CSS -->
         <ul class="card">
-            <li><strong>p</strong> → Selector (qué elemento)</li>
-            <li><strong>color</strong> → Propiedad (qué se cambia)</li>
-            <li><strong>blue</strong> → Valor (cómo se cambia)</li>
+            <li><strong>p</strong> → Selector: indica qué elemento HTML se modifica</li>
+            <li><strong>color</strong> → Propiedad: define qué aspecto se cambia</li>
+            <li><strong>blue</strong> → Valor: indica cómo se aplica el cambio</li>
         </ul>
 
         <!-- SELECTORES -->
-        <h3 style="margin-top: 3rem; color: #1e3c72;">Selectores fundamentales</h3>
+        <!-- Explicación de los tipos de selectores -->
+        <h3 style="margin-top: 3rem; color: #1e3c72;">
+            Selectores fundamentales
+        </h3>
 
         <div class="card">
-            <p>Los selectores indican a qué elementos se aplican los estilos.</p>
+            <p>
+                Los selectores permiten indicar a qué elementos HTML se les aplicarán los estilos.
+                Existen diferentes tipos de selectores según el caso de uso.
+            </p>
             <ul>
-                <li><strong>Selector de etiqueta</strong> → afecta a todas las etiquetas</li>
-                <li><strong>Selector de clase</strong> → reutilizable</li>
-                <li><strong>Selector de ID</strong> → único</li>
+                <li>
+                    <strong>Selector de etiqueta</strong> → Aplica estilos a todas las etiquetas del mismo tipo
+                </li>
+                <li>
+                    <strong>Selector de clase</strong> → Permite reutilizar estilos en varios elementos
+                </li>
+                <li>
+                    <strong>Selector de ID</strong> → Se usa para un elemento único en la página
+                </li>
             </ul>
         </div>
 
+        <!-- Ejemplos de selectores -->
         <div class="code-example">
-<pre><code>/* Etiqueta */
+<pre><code>/* Selector de etiqueta */
 p {
   color: #333;
 }
 
-/* Clase */
+/* Selector de clase */
 .tarjeta {
   background-color: #f5f7fa;
   padding: 20px;
 }
 
-/* ID */
+/* Selector de ID */
 #principal {
   max-width: 800px;
 }</code></pre>
         </div>
 
         <!-- COLORES -->
-        <h3 style="margin-top: 3rem; color: #1e3c72;">Colores en CSS</h3>
+        <!-- Explicación de formatos de color -->
+        <h3 style="margin-top: 3rem; color: #1e3c72;">
+            Colores en CSS
+        </h3>
+
         <p>
-            CSS permite usar colores por nombre, hexadecimal o RGB.
+            CSS ofrece varias formas de definir colores.
+            Las más comunes son los nombres predefinidos, los valores hexadecimales y el formato RGB.
         </p>
 
         <div class="code-example">
@@ -1157,7 +1580,15 @@ button {
         </div>
 
         <!-- TIPOGRAFÍA -->
-        <h3 style="margin-top: 3rem; color: #1e3c72;">Texto y tipografía</h3>
+        <!-- Control del texto -->
+        <h3 style="margin-top: 3rem; color: #1e3c72;">
+            Texto y tipografía
+        </h3>
+
+        <p>
+            CSS permite controlar cómo se ve el texto: tipo de letra, tamaño,
+            separación entre líneas y legibilidad general.
+        </p>
 
         <div class="code-example">
 <pre><code>body {
@@ -1174,9 +1605,14 @@ p {
         </div>
 
         <!-- ESPACIADO -->
-        <h3 style="margin-top: 3rem; color: #1e3c72;">Espaciado y caja</h3>
+        <!-- Modelo de caja -->
+        <h3 style="margin-top: 3rem; color: #1e3c72;">
+            Espaciado y modelo de caja
+        </h3>
+
         <p>
-            Todo en CSS es una caja. Controlar márgenes y relleno es clave.
+            En CSS, todos los elementos se comportan como cajas.
+            Controlar márgenes, relleno y bordes es esencial para organizar el diseño.
         </p>
 
         <div class="code-example">
@@ -1188,9 +1624,14 @@ p {
         </div>
 
         <!-- FLEXBOX -->
-        <h3 style="margin-top: 3rem; color: #1e3c72;">Flexbox (layout moderno)</h3>
+        <!-- Sistema de layout moderno -->
+        <h3 style="margin-top: 3rem; color: #1e3c72;">
+            Flexbox (layout moderno)
+        </h3>
+
         <p>
-            Flexbox sirve para alinear y distribuir elementos fácilmente.
+            Flexbox es un sistema de diseño que facilita la alineación y distribución
+            de elementos dentro de un contenedor.
         </p>
 
         <div class="code-example">
@@ -1203,7 +1644,14 @@ p {
         </div>
 
         <!-- SOMBRAS -->
-        <h3 style="margin-top: 3rem; color: #1e3c72;">Sombras y efectos</h3>
+        <!-- Efectos visuales -->
+        <h3 style="margin-top: 3rem; color: #1e3c72;">
+            Sombras y efectos
+        </h3>
+
+        <p>
+            Las sombras ayudan a dar profundidad y jerarquía visual a los elementos.
+        </p>
 
         <div class="code-example">
 <pre><code>.tarjeta {
@@ -1212,10 +1660,14 @@ p {
         </div>
 
         <!-- EJERCICIO -->
-        <h3 style="margin-top: 3rem; color: #1e3c72;">Ejercicio final</h3>
+        <!-- Práctica final -->
+        <h3 style="margin-top: 3rem; color: #1e3c72;">
+            Ejercicio final
+        </h3>
+
         <div class="card">
             <p>
-                Diseña una tarjeta de presentación para <strong>tu amigo</strong> que tenga:
+                Diseña una tarjeta de presentación aplicando los conceptos aprendidos en esta sección.
             </p>
             <ul>
                 <li>Fondo blanco</li>
@@ -1225,10 +1677,12 @@ p {
                 <li>Sombra suave</li>
             </ul>
             <p>
-                Este ejercicio combina todo lo aprendido hasta ahora.
+                Este ejercicio permite practicar sintaxis, selectores, tipografía,
+                espaciado y efectos visuales.
             </p>
         </div>
 
+        <!-- Solución de ejemplo -->
         <div class="code-example">
 <pre><code>.tarjeta {
   background-color: #fff;
@@ -1242,6 +1696,7 @@ p {
 
     </div>
 </div>
+
 
 
     <!-- WORKSPACE DE EJERCICIOS -->
@@ -1289,6 +1744,8 @@ p {
 
 
     <script>
+
+        
 
 const exercises = [
     {
@@ -1391,8 +1848,11 @@ const exercises = [
             
             return { success: true, message: '¡Increíble! Dominas CSS Grid y diseño responsive.' };
         }
+        
+        
     }
 ];
+
 
 
 let currentExercise = null;
