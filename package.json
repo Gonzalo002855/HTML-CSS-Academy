@@ -1,0 +1,7 @@
+{
+  "scripts": {
+    "dev": "set NODE_ENV=development && node local-server.js",
+    "start": "set NODE_ENV=production && node local-server.js",
+    "local": "node local-server.js"
+  }
+}

@@ -1,0 +1,2215 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <!-- Power Fenix-->
+         <!-- ACTUALIZACIÓN 31/01/2026 -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aprende HTML & CSS | Desarrollo Web Profesional</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            background-color: #f8f9fa;
+            overflow-x: hidden;
+        }
+
+        header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            backdrop-filter: blur(10px);
+            animation: slideDown 0.6s ease-out;
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            letter-spacing: -0.5px;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo i {
+            font-size: 1.8rem;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: white;
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover {
+            transform: translateY(-2px);
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 5rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="2" fill="rgba(255,255,255,0.1)"/></svg>');
+            animation: float 20s linear infinite;
+        }
+
+        @keyframes float {
+            from { transform: translateY(0); }
+            to { transform: translateY(-100px); }
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            position: relative;
+            z-index: 1;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            opacity: 0.95;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            position: relative;
+            z-index: 1;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: white;
+            color: #1e3c72;
+            padding: 1rem 2.5rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            z-index: 1;
+            animation: fadeInUp 1.2s ease-out;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            border: none;
+            cursor: pointer;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .cta-button:active {
+            transform: translateY(-1px) scale(1.02);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .section {
+            display: none;
+            animation: fadeIn 0.5s;
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            color: #1e3c72;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 3px solid #2a5298;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .card {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.07);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(42,82,152,0.1), transparent);
+            transition: left 0.5s;
+        }
+
+        .card:hover::before {
+            left: 100%;
+        }
+
+        .card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 12px 24px rgba(30,60,114,0.15);
+        }
+
+        .card h3 {
+            color: #1e3c72;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .card h3 i {
+            font-size: 1.3rem;
+            color: #2a5298;
+        }
+
+        .card p {
+            color: #5a6c7d;
+            line-height: 1.7;
+        }
+
+        .code-example {
+            background: #2d3748;
+            color: #e2e8f0;
+            padding: 1.5rem;
+            border-radius: 6px;
+            overflow-x: auto;
+            margin: 1.5rem 0;
+            font-family: 'Courier New', monospace;
+        }
+
+        .code-example code {
+            font-size: 0.95rem;
+        }
+
+        .highlight {
+            color: #81e6d9;
+        }
+
+        .tag {
+            color: #fbb6ce;
+        }
+
+        .attribute {
+            color: #90cdf4;
+        }
+
+        .exercise-list {
+            display: grid;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .exercise-card {
+            background: white;
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.07);
+            border-left: 4px solid #2a5298;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .exercise-card:hover {
+            transform: translateX(10px);
+            box-shadow: 0 8px 16px rgba(30,60,114,0.15);
+        }
+
+        .exercise-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .exercise-header h3 {
+            color: #1e3c72;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .exercise-header h3 i {
+            color: #2a5298;
+        }
+
+        .exercise-status {
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+        }
+
+        .status-badge {
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .status-badge.pending {
+            background: #ffeaa7;
+            color: #d63031;
+        }
+
+        .status-badge.completed {
+            background: #55efc4;
+            color: #00b894;
+        }
+
+        .btn-start {
+            background: #2a5298;
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 6px;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .btn-start:hover {
+            background: #1e3c72;
+            transform: translateY(-2px);
+        }
+
+        .exercise-workspace {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 1000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            animation: fadeIn 0.3s;
+        }
+
+        .exercise-workspace.active {
+            display: flex;
+        }
+
+        .workspace-container {
+            background: white;
+            width: 95%;
+            max-width: 1400px;
+            height: 90%;
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            animation: scaleIn 0.3s ease-out;
+        }
+
+        @keyframes scaleIn {
+            from {
+                transform: scale(0.9);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .workspace-header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 1.5rem 2rem;
+            border-radius: 12px 12px 0 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .workspace-header h2 {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-close {
+            background: rgba(255,255,255,0.2);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .btn-close:hover {
+            background: rgba(255,255,255,0.3);
+        }
+
+        .workspace-body {
+            display: flex;
+            flex: 1;
+            overflow: hidden;
+        }
+
+        .editor-panel {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            border-right: 1px solid #e1e8ed;
+        }
+
+        .editor-tabs {
+            display: flex;
+            background: #f8f9fa;
+            border-bottom: 1px solid #e1e8ed;
+        }
+
+        .editor-tab {
+            padding: 0.8rem 1.5rem;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            color: #5a6c7d;
+            transition: all 0.3s;
+            border-bottom: 3px solid transparent;
+        }
+
+        .editor-tab.active {
+            color: #1e3c72;
+            border-bottom-color: #2a5298;
+            background: white;
+        }
+
+        .editor-content {
+            flex: 1;
+            display: none;
+            padding: 1rem;
+        }
+
+        .editor-content.active {
+            display: block;
+        }
+
+        textarea.code-editor {
+            width: 100%;
+            height: 100%;
+            border: none;
+            font-family: 'Courier New', monospace;
+            font-size: 0.95rem;
+            padding: 1rem;
+            resize: none;
+            background: #2d3748;
+            color: #e2e8f0;
+            border-radius: 6px;
+        }
+
+        .preview-panel {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            background: #f8f9fa;
+        }
+
+        .preview-header {
+            padding: 1rem 1.5rem;
+            background: white;
+            border-bottom: 1px solid #e1e8ed;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .preview-header h3 {
+            color: #1e3c72;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-check {
+            background: #00b894;
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 6px;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .btn-check:hover {
+            background: #00a085;
+            transform: translateY(-2px);
+        }
+
+        .preview-frame {
+            flex: 1;
+            background: white;
+            margin: 1rem;
+            border-radius: 6px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            overflow: auto;
+        }
+
+        .feedback-panel {
+            padding: 1rem 1.5rem;
+            background: white;
+            border-top: 1px solid #e1e8ed;
+            min-height: 60px;
+        }
+
+        .feedback {
+            padding: 0.8rem 1.2rem;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            animation: slideInUp 0.3s ease-out;
+        }
+
+        @keyframes slideInUp {
+            from {
+                transform: translateY(20px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .feedback.success {
+            background: #d5f4e6;
+            color: #00b894;
+            border-left: 4px solid #00b894;
+        }
+
+        .feedback.error {
+            background: #ffe6e6;
+            color: #d63031;
+            border-left: 4px solid #d63031;
+        }
+
+        .feedback.info {
+            background: #e6f3ff;
+            color: #2a5298;
+            border-left: 4px solid #2a5298;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .stat-box {
+            text-align: center;
+            padding: 2rem;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.07);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-box::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, #1e3c72, #2a5298);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .stat-box:hover::after {
+            transform: scaleX(1);
+        }
+
+        .stat-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(30,60,114,0.2);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #2a5298;
+            animation: countUp 1s ease-out;
+        }
+
+        @keyframes countUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .stat-label {
+            color: #5a6c7d;
+            font-size: 1.1rem;
+            margin-top: 0.5rem;
+        }
+
+        .project-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            transform: scale(0);
+            transition: transform 0.6s ease;
+        }
+
+        .project-card:hover::before {
+            transform: scale(1);
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+        }
+
+        .project-card h3 {
+            color: white;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .difficulty {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            margin-top: 1rem;
+        }
+
+        footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+
+        @media (max-width: 968px) {
+            .workspace-body {
+                flex-direction: column;
+            }
+
+            .editor-panel {
+                border-right: none;
+                border-bottom: 1px solid #e1e8ed;
+                max-height: 50%;
+            }
+
+            .preview-panel {
+                max-height: 50%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .hero {
+                padding: 3rem 1.5rem;
+            }
+            
+            .nav-links {
+                gap: 1rem;
+                font-size: 0.85rem;
+            }
+
+            .logo {
+                font-size: 1.2rem;
+            }
+
+            .logo i {
+                font-size: 1.4rem;
+            }
+            
+            .cards {
+                grid-template-columns: 1fr;
+            }
+
+            .container {
+                padding: 2rem 1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .stat-number {
+                font-size: 2.5rem;
+            }
+
+            .workspace-container {
+                width: 100%;
+                height: 100%;
+                border-radius: 0;
+            }
+
+            .workspace-header {
+                border-radius: 0;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .nav-links {
+                gap: 0.5rem;
+                font-size: 0.75rem;
+            }
+
+            nav {
+                padding: 0 1rem;
+            }
+
+            .hero h1 {
+                font-size: 1.5rem;
+            }
+
+            .cta-button {
+                padding: 0.8rem 1.5rem;
+                font-size: 0.9rem;
+            }
+
+            .card {
+                padding: 1.5rem;
+            }
+
+            .project-card {
+                padding: 1.5rem;
+            }
+
+            .editor-tabs {
+                overflow-x: auto;
+            }
+
+            .editor-tab {
+                padding: 0.6rem 1rem;
+                font-size: 0.85rem;
+            }
+        }
+
+        @media (min-width: 1400px) {
+            .container {
+                max-width: 1400px;
+            }
+
+            .hero h1 {
+                font-size: 3.5rem;
+            }
+
+            .cards {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <i class="fas fa-code"></i>
+                Programming Academy
+            </div>
+<ul class="nav-links">
+    <li><a href="#inicio" onclick="showSection('inicio')">Inicio</a></li>
+    <li><a href="#html" onclick="showSection('html')">HTML</a></li>
+    <li><a href="#css" onclick="showSection('css')">CSS</a></li>
+    <li><a href="#javascript" onclick="showSection('javascript')">JavaScript</a></li>
+    <li><a href="#ejercicios" onclick="showSection('ejercicios')">Ejercicios</a></li>
+    <li><a href="#proyectos" onclick="showSection('proyectos')">Proyectos</a></li>
+</ul>
+        </nav>
+    </header>
+
+    <div class="hero">
+        <h1>Aprende Desarrollo Web desde Cero</h1>
+        <p>Domina HTML y CSS con ejemplos prácticos, ejercicios interactivos y proyectos reales. Tu camino hacia el desarrollo web profesional comienza aquí.</p>
+        <a href="#html" onclick="showSection('html')" class="cta-button">Comenzar Ahora</a>
+    </div>
+
+
+    <div id="inicio" class="section active">
+        <div class="container">
+            <h2 class="section-title">Bienvenido a tu Academia de Desarrollo Web</h2>
+            
+            <div class="stats">
+                <div class="stat-box">
+<div class="stat-number">3</div>
+<div class="stat-label">Tecnologías Core</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number" id="completedCount">0</div>
+                    <div class="stat-label">Ejercicios Completados</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">5</div>
+                    <div class="stat-label">Proyectos Finales</div>
+                </div>
+            </div>
+
+            <div class="cards">
+                <div class="card">
+                    <h3><i class="fas fa-file-code"></i> HTML - Estructura</h3>
+                    <p>Aprende a crear la estructura de páginas web con HTML5. Desde etiquetas básicas hasta formularios y elementos semánticos.</p>
+                </div>
+                
+                <div class="card">
+                    <h3><i class="fas fa-palette"></i> CSS - Diseño</h3>
+                    <p>Domina el diseño y estilizado web con CSS3. Aprende layouts, animaciones, flexbox, grid y responsive design.</p>
+                </div>
+                <div class="card">
+    <h3><i class="fas fa-bolt"></i> JavaScript - Interactividad</h3>
+    <p>Dale vida a tus páginas con JavaScript. Aprende lógica de programación, manipulación del DOM y eventos interactivos.</p>
+</div>
+                <div class="card">
+                    <h3><i class="fas fa-dumbbell"></i> Práctica Real</h3>
+                    <p>Consolida tu aprendizaje con ejercicios prácticos y proyectos reales que podrás añadir a tu portafolio.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!-- SECCIÓN HTML -->
+<!-- Esta sección introduce el lenguaje HTML dentro del curso -->
+<div id="html" class="section">
+
+    <!-- Contenedor principal que centra el contenido y limita el ancho -->
+    <div class="container">
+
+        <!-- Título principal de la sección HTML -->
+        <h2 class="section-title">HTML — Lenguaje de Marcado</h2>
+        
+        <!-- INTRODUCCIÓN -->
+        <!-- Tarjeta inicial que explica qué es HTML -->
+        <div class="card">
+            <h3>¿Qué es HTML?</h3>
+            <p>
+                HTML (HyperText Markup Language) es el lenguaje que se utiliza para
+                <strong>crear la estructura</strong> de una página web.
+            </p>
+            <p>
+                Con HTML se definen los distintos elementos de una página, como títulos,
+                párrafos, imágenes, enlaces y secciones.
+            </p>
+            <p>
+                HTML <strong>no se encarga del diseño</strong>;
+                su función es organizar el contenido para que el navegador lo interprete correctamente.
+            </p>
+        </div>
+
+        <!-- ETIQUETAS -->
+        <!-- Explicación del concepto de etiqueta HTML -->
+        <h3 style="margin-top: 3rem; color: #1e3c72;">
+            ¿Qué es una etiqueta?
+        </h3>
+
+        <p>
+            HTML funciona mediante <strong>etiquetas</strong>.
+            Las etiquetas indican al navegador qué tipo de contenido se está mostrando.
+            La mayoría de ellas tienen una etiqueta de apertura y una de cierre.
+        </p>
+
+        <!-- Ejemplos básicos de etiquetas -->
+        <div class="code-example">
+<pre><code>&lt;p&gt;Este es un párrafo&lt;/p&gt;
+&lt;h1&gt;Este es un título&lt;/h1&gt;</code></pre>
+        </div>
+
+        <!-- Explicación de etiquetas comunes -->
+        <div class="card">
+            <ul>
+                <li><strong>&lt;p&gt;</strong> → Se usa para escribir párrafos de texto</li>
+                <li><strong>&lt;h1&gt;</strong> → Representa el título principal de la página</li>
+                <li><strong>&lt;h2&gt; a &lt;h6&gt;</strong> → Se usan para subtítulos y jerarquía de contenido</li>
+            </ul>
+        </div>
+
+        <!-- ESTRUCTURA -->
+        <!-- Estructura básica obligatoria de un documento HTML -->
+        <h3 style="margin-top: 3rem; color: #1e3c72;">
+            Estructura básica de una página
+        </h3>
+
+        <p>
+            Toda página HTML debe seguir una estructura básica.
+            Esta estructura permite que el navegador entienda correctamente el documento.
+        </p>
+
+        <!-- Ejemplo completo de estructura HTML -->
+        <div class="code-example">
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="es"&gt;
+  &lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;Mi primera web&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;Hola Juan&lt;/h1&gt;
+    &lt;p&gt;Estoy aprendiendo HTML&lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+        </div>
+
+        <!-- ETIQUETAS COMUNES -->
+        <!-- Listado de etiquetas HTML más utilizadas -->
+        <h3 style="margin-top: 3rem; color: #1e3c72;">
+            Etiquetas HTML más usadas
+        </h3>
+
+        <div class="cards">
+
+            <!-- Tarjeta: etiquetas de texto -->
+            <div class="card">
+                <h3>Texto</h3>
+                <p><strong>&lt;h1&gt;</strong> a <strong>&lt;h6&gt;</strong>: Títulos y subtítulos</p>
+                <p><strong>&lt;p&gt;</strong>: Párrafos de texto</p>
+                <p><strong>&lt;strong&gt;</strong>: Texto importante o destacado</p>
+                <p><strong>&lt;em&gt;</strong>: Texto enfatizado</p>
+            </div>
+
+            <!-- Tarjeta: enlaces e imágenes -->
+            <div class="card">
+                <h3>Enlaces e imágenes</h3>
+                <p><strong>&lt;a&gt;</strong>: Enlaces a otras páginas</p>
+                <p><strong>&lt;img&gt;</strong>: Inserción de imágenes</p>
+
+                <!-- Ejemplo de enlace e imagen -->
+                <div class="code-example">
+<pre><code>&lt;a href="#"&gt;Haz clic&lt;/a&gt;
+&lt;img src="foto.jpg" alt="Imagen"&gt;</code></pre>
+                </div>
+            </div>
+
+            <!-- Tarjeta: contenedores -->
+            <div class="card">
+                <h3>Contenedores</h3>
+                <p><strong>&lt;div&gt;</strong>: Contenedor genérico</p>
+                <p><strong>&lt;section&gt;</strong>: Sección de contenido</p>
+                <p><strong>&lt;header&gt;</strong>: Cabecera de la página o sección</p>
+                <p><strong>&lt;footer&gt;</strong>: Pie de página</p>
+            </div>
+
+        </div>
+
+        <!-- LISTAS -->
+        <!-- Explicación de listas en HTML -->
+        <h3 style="margin-top: 3rem; color: #1e3c72;">
+            Listas en HTML
+        </h3>
+
+        <p>
+            Las listas se utilizan para mostrar elementos relacionados entre sí.
+            La etiqueta <strong>&lt;ul&gt;</strong> crea una lista sin orden.
+        </p>
+
+        <div class="code-example">
+<pre><code>&lt;ul&gt;
+  &lt;li&gt;HTML&lt;/li&gt;
+  &lt;li&gt;CSS&lt;/li&gt;
+  &lt;li&gt;JavaScript&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+        </div>
+
+        <!-- EJERCICIO -->
+        <!-- Práctica final para reforzar conceptos -->
+        <h3 style="margin-top: 3rem; color: #1e3c72;">
+            Ejercicio práctico
+        </h3>
+
+        <div class="card">
+            <p>
+                Crea una página HTML que incluya los siguientes elementos:
+            </p>
+            <ul>
+                <li>Un título con el nombre que tú elijas</li>
+                <li>Un párrafo de presentación</li>
+                <li>Una lista con tres hobbies</li>
+                <li>Un enlace</li>
+            </ul>
+            <p>
+                Este ejercicio refuerza el uso de etiquetas, estructura
+                y organización del contenido en HTML.
+            </p>
+        </div>
+
+    </div>
+</div>
+
+
+
+    <!-- SECCIÓN EJERCICIOS -->
+    <div id="ejercicios" class="section">
+        <div class="container">
+            <h2 class="section-title">Ejercicios Prácticos Interactivos</h2>
+            <p style="color: #5a6c7d; margin-bottom: 2rem;">Haz clic en "Empezar" para abrir el editor interactivo y completar cada ejercicio</p>
+            
+            <div class="exercise-list" id="exerciseList"></div>
+        </div>
+    </div>
+
+    <!-- SECCIÓN PROYECTOS -->
+    <div id="proyectos" class="section">
+        <div class="container">
+            <h2 class="section-title">Proyectos Finales</h2>
+            
+            <div class="project-card">
+                <h3><i class="fas fa-user"></i> Proyecto 1: Landing Page Personal</h3>
+                <p>Crea tu página personal de presentación con secciones: Sobre mí, Habilidades, Proyectos y Contacto. Debe ser completamente responsive.</p>
+                <span class="difficulty">Nivel: Principiante</span>
+            </div>
+
+            <div class="project-card" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                <h3><i class="fas fa-blog"></i> Proyecto 2: Blog Profesional</h3>
+                <p>Diseña un blog con página de inicio, artículos individuales y barra lateral. Incluye navegación, header, footer y sistema de grid para los posts.</p>
+                <span class="difficulty">Nivel: Intermedio</span>
+            </div>
+
+            <div class="project-card" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
+                <h3><i class="fas fa-chart-line"></i> Proyecto 3: Dashboard de Estadísticas</h3>
+                <p>Construye un panel de control con tarjetas de métricas, gráficos simulados con CSS y navegación lateral. Usa CSS Grid y Flexbox avanzado.</p>
+                <span class="difficulty">Nivel: Intermedio</span>
+            </div>
+
+            <div class="project-card" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">
+                <h3><i class="fas fa-shopping-cart"></i> Proyecto 4: E-commerce UI</h3>
+                <p>Diseña la interfaz de una tienda online: página de productos, detalle de producto, carrito de compras. Incluye filtros y búsqueda.</p>
+                <span class="difficulty">Nivel: Avanzado</span>
+            </div>
+
+            <div class="project-card" style="background: linear-gradient(135deg, #30cfd0 0%, #330867 100%);">
+                <h3><i class="fas fa-briefcase"></i> Proyecto 5: Portfolio Completo</h3>
+                <p>Desarrolla tu portfolio profesional completo con múltiples páginas, animaciones CSS, formulario funcional y galería de proyectos interactiva.</p>
+                <span class="difficulty">Nivel: Avanzado</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- SECCIÓN JAVASCRIPT -->
+<div id="javascript" class="section">
+    <div class="container">
+        <h2 class="section-title">JavaScript — Dale vida a tus páginas</h2>
+
+        <div class="card">
+            <h3><i class="fas fa-bolt"></i> ¿Qué es JavaScript?</h3>
+            <p>
+                JavaScript es el lenguaje de programación que permite añadir
+                <strong>interactividad y comportamiento dinámico</strong> a las páginas web.
+            </p>
+            <p>
+                Mientras HTML define la estructura y CSS el diseño,
+                <strong>JavaScript controla lo que sucede cuando el usuario interactúa</strong>
+                con la página: clics, formularios, animaciones, peticiones a servidores y mucho más.
+            </p>
+            <p>
+                Es el tercer pilar del desarrollo web y el lenguaje de programación
+                más usado del mundo.
+            </p>
+        </div>
+
+        <h3 style="margin-top: 3rem; color: #1e3c72;">
+            <i class="fas fa-code"></i> Sintaxis básica
+        </h3>
+
+        <p>
+            JavaScript se escribe dentro de etiquetas <code>&lt;script&gt;</code>
+            o en archivos externos con extensión <code>.js</code>
+        </p>
+
+        <div class="code-example">
+<pre><code>&lt;script&gt;
+  console.log("¡Hola desde JavaScript!");
+  alert("Bienvenido a JS");
+&lt;/script&gt;</code></pre>
+        </div>
+
+        <h3 style="margin-top: 3rem; color: #1e3c72;">
+            <i class="fas fa-box"></i> Variables
+        </h3>
+
+        <p>
+            Las variables permiten almacenar información para usarla después.
+            En JavaScript moderno se usan <code>let</code> y <code>const</code>.
+        </p>
+
+        <div class="code-example">
+<pre><code>let nombre = "Gonzalo";
+let edad = 25;
+const PI = 3.14159;
+
+console.log(nombre); // Muestra: Gonzalo
+console.log(edad);   // Muestra: 25</code></pre>
+        </div>
+
+        <div class="card">
+            <ul>
+                <li><strong>let</strong> → Para variables que pueden cambiar</li>
+                <li><strong>const</strong> → Para valores constantes que no cambian</li>
+                <li><strong>var</strong> → Forma antigua, evitar en código moderno</li>
+            </ul>
+        </div>
+
+        <h3 style="margin-top: 3rem; color: #1e3c72;">
+            <i class="fas fa-list"></i> Tipos de datos
+        </h3>
+
+        <div class="code-example">
+<pre><code>// Números
+let numero = 42;
+
+// Textos (strings)
+let texto = "Hola Mundo";
+
+// Booleanos
+let esVerdadero = true;
+
+// Arrays (listas)
+let frutas = ["manzana", "pera", "uva"];
+
+// Objetos
+let persona = {
+  nombre: "Juan",
+  edad: 30
+};</code></pre>
+        </div>
+
+        <h3 style="margin-top: 3rem; color: #1e3c72;">
+            <i class="fas fa-project-diagram"></i> Funciones
+        </h3>
+
+        <p>
+            Las funciones son bloques de código reutilizables que realizan
+            una tarea específica.
+        </p>
+
+        <div class="code-example">
+<pre><code>// Declaración de función
+function saludar(nombre) {
+  return "Hola " + nombre;
+}
+
+// Llamada a la función
+let mensaje = saludar("María");
+console.log(mensaje); // Muestra: Hola María
+
+// Función flecha (moderna)
+const sumar = (a, b) => {
+  return a + b;
+};
+
+console.log(sumar(5, 3)); // Muestra: 8</code></pre>
+        </div>
+
+        <h3 style="margin-top: 3rem; color: #1e3c72;">
+            <i class="fas fa-code-branch"></i> Condicionales
+        </h3>
+
+        <p>
+            Los condicionales permiten ejecutar código solo si se cumple
+            una condición.
+        </p>
+
+        <div class="code-example">
+<pre><code>let edad = 18;
+
+if (edad >= 18) {
+  console.log("Eres mayor de edad");
+} else {
+  console.log("Eres menor de edad");
+}
+
+// Operador ternario (forma corta)
+let mensaje = edad >= 18 ? "Mayor" : "Menor";
+console.log(mensaje);</code></pre>
+        </div>
+
+        <h3 style="margin-top: 3rem; color: #1e3c72;">
+            <i class="fas fa-sync"></i> Bucles
+        </h3>
+
+        <p>
+            Los bucles permiten repetir código múltiples veces.
+        </p>
+
+        <div class="code-example">
+<pre><code>// Bucle for
+for (let i = 0; i < 5; i++) {
+  console.log("Número: " + i);
+}
+
+// Bucle para arrays
+let colores = ["rojo", "verde", "azul"];
+
+colores.forEach(color => {
+  console.log(color);
+});</code></pre>
+        </div>
+
+        <h3 style="margin-top: 3rem; color: #1e3c72;">
+            <i class="fas fa-sitemap"></i> Manipulación del DOM
+        </h3>
+
+        <p>
+            El DOM (Document Object Model) permite a JavaScript interactuar
+            con el HTML de la página.
+        </p>
+
+        <div class="cards">
+            <div class="card">
+                <h3>Seleccionar elementos</h3>
+                <div class="code-example">
+<pre><code>// Por ID
+let titulo = document.getElementById("titulo");
+
+// Por clase
+let botones = document.querySelectorAll(".boton");
+
+// Por etiqueta
+let parrafos = document.getElementsByTagName("p");</code></pre>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>Modificar contenido</h3>
+                <div class="code-example">
+<pre><code>// Cambiar texto
+titulo.textContent = "Nuevo título";
+
+// Cambiar HTML
+titulo.innerHTML = "&lt;strong&gt;Importante&lt;/strong&gt;";</code></pre>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>Modificar estilos</h3>
+                <div class="code-example">
+<pre><code>// Cambiar color
+titulo.style.color = "red";
+
+// Añadir clase CSS
+titulo.classList.add("destacado");</code></pre>
+                </div>
+            </div>
+        </div>
+
+        <h3 style="margin-top: 3rem; color: #1e3c72;">
+            <i class="fas fa-mouse-pointer"></i> Eventos
+        </h3>
+
+        <p>
+            Los eventos permiten que JavaScript responda a las acciones del usuario.
+        </p>
+
+        <div class="code-example">
+<pre><code>// Evento de clic
+let boton = document.getElementById("miBoton");
+
+boton.addEventListener("click", function() {
+  alert("¡Botón presionado!");
+});
+
+// Evento con función flecha
+boton.addEventListener("click", () => {
+  console.log("Clic detectado");
+});
+
+// Eventos comunes
+input.addEventListener("input", () => { /* cambio en input */ });
+form.addEventListener("submit", () => { /* envío de formulario */ });
+window.addEventListener("load", () => { /* página cargada */ });</code></pre>
+        </div>
+
+        <h3 style="margin-top: 3rem; color: #1e3c72;">
+            <i class="fas fa-star"></i> Ejemplo práctico completo
+        </h3>
+
+        <p>
+            Veamos un ejemplo que combina HTML, CSS y JavaScript
+            para crear un contador interactivo:
+        </p>
+
+        <div class="code-example">
+<pre><code>&lt;!-- HTML --&gt;
+&lt;div id="contador"&gt;
+  &lt;h2&gt;Contador: &lt;span id="numero"&gt;0&lt;/span&gt;&lt;/h2&gt;
+  &lt;button id="incrementar"&gt;+1&lt;/button&gt;
+  &lt;button id="decrementar"&gt;-1&lt;/button&gt;
+  &lt;button id="reset"&gt;Reset&lt;/button&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+// JavaScript
+let numero = 0;
+const display = document.getElementById("numero");
+
+document.getElementById("incrementar").addEventListener("click", () => {
+  numero++;
+  display.textContent = numero;
+});
+
+document.getElementById("decrementar").addEventListener("click", () => {
+  numero--;
+  display.textContent = numero;
+});
+
+document.getElementById("reset").addEventListener("click", () => {
+  numero = 0;
+  display.textContent = numero;
+});
+&lt;/script&gt;</code></pre>
+        </div>
+
+        <h3 style="margin-top: 3rem; color: #1e3c72;">
+            <i class="fas fa-stream"></i> Métodos útiles de arrays
+        </h3>
+
+        <div class="code-example">
+<pre><code>let numeros = [1, 2, 3, 4, 5];
+
+// map: transforma cada elemento
+let dobles = numeros.map(n => n * 2);
+// Resultado: [2, 4, 6, 8, 10]
+
+// filter: filtra elementos
+let mayores = numeros.filter(n => n > 3);
+// Resultado: [4, 5]
+
+// reduce: reduce a un solo valor
+let suma = numeros.reduce((total, n) => total + n, 0);
+// Resultado: 15
+
+// find: encuentra el primer elemento que cumple condición
+let encontrado = numeros.find(n => n > 3);
+// Resultado: 4</code></pre>
+        </div>
+
+        <h3 style="margin-top: 3rem; color: #1e3c72;">
+            <i class="fas fa-laptop-code"></i> Ejercicio práctico
+        </h3>
+
+        <div class="card">
+            <p>
+                Crea una página que contenga:
+            </p>
+            <ul>
+                <li>Un campo de texto para ingresar tu nombre</li>
+                <li>Un botón que al hacer clic muestre "Hola [nombre]"</li>
+                <li>Un segundo botón que cambie el color de fondo de la página</li>
+                <li>Un contador que muestre cuántas veces se ha cambiado el color</li>
+            </ul>
+            <p>
+                Este ejercicio combina selección de elementos, eventos,
+                manipulación del DOM y variables.
+            </p>
+        </div>
+
+        <div class="card" style="margin-top: 2rem; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white;">
+            <h3 style="color: white;"><i class="fas fa-lightbulb"></i> Consejos para aprender JavaScript</h3>
+            <ul style="color: rgba(255,255,255,0.95);">
+                <li>Practica escribiendo código todos los días, aunque sean 15 minutos</li>
+                <li>Usa console.log() constantemente para ver qué hace tu código</li>
+                <li>Empieza con proyectos pequeños y ve aumentando la complejidad</li>
+                <li>Lee mensajes de error con atención, te dicen exactamente qué falla</li>
+                <li>No memorices todo, aprende a buscar y entender la documentación</li>
+            </ul>
+        </div>
+
+    </div>
+</div>
+
+<!-- SECCIÓN CSS -->
+<!-- Esta sección introduce el lenguaje CSS dentro del curso -->
+<div id="css" class="section">
+
+    <!-- Contenedor general para limitar el ancho y centrar el contenido -->
+    <div class="container">
+
+        <!-- Título principal de la sección CSS -->
+        <h2 class="section-title">CSS — Domina el diseño web</h2>
+
+        <!-- INTRODUCCIÓN -->
+        <!-- Tarjeta explicativa inicial -->
+        <div class="card">
+            <h3>¿Qué es CSS?</h3>
+            <p>
+                CSS (Cascading Style Sheets) es el lenguaje utilizado para definir el
+                aspecto visual de una página web.  
+                Mientras que HTML se encarga de crear la estructura y el contenido,
+                <strong>CSS controla cómo se muestra ese contenido</strong>.
+            </p>
+            <p>
+                Con CSS puedes modificar colores, tamaños, márgenes, posiciones,
+                tipografías, animaciones y efectos visuales.
+            </p>
+            <p>
+                Una forma sencilla de entenderlo es esta:  
+                el HTML es la estructura de la página y el CSS es el diseño que la hace atractiva.
+            </p>
+        </div>
+
+        <!-- SINTAXIS -->
+        <!-- Explicación de cómo se escribe una regla CSS -->
+        <h3 style="margin-top: 3rem; color: #1e3c72;">
+            Sintaxis básica de CSS
+        </h3>
+
+        <p>
+            CSS funciona mediante reglas.  
+            Cada regla indica qué elemento se va a modificar y qué estilo se le va a aplicar.
+        </p>
+
+        <!-- Ejemplo de una regla CSS -->
+        <div class="code-example">
+<pre><code>p {
+  color: blue;
+  font-size: 16px;
+}</code></pre>
+        </div>
+
+        <!-- Desglose de la regla CSS -->
+        <ul class="card">
+            <li><strong>p</strong> → Selector: indica qué elemento HTML se modifica</li>
+            <li><strong>color</strong> → Propiedad: define qué aspecto se cambia</li>
+            <li><strong>blue</strong> → Valor: indica cómo se aplica el cambio</li>
+        </ul>
+
+        <!-- SELECTORES -->
+        <!-- Explicación de los tipos de selectores -->
+        <h3 style="margin-top: 3rem; color: #1e3c72;">
+            Selectores fundamentales
+        </h3>
+
+        <div class="card">
+            <p>
+                Los selectores permiten indicar a qué elementos HTML se les aplicarán los estilos.
+                Existen diferentes tipos de selectores según el caso de uso.
+            </p>
+            <ul>
+                <li>
+                    <strong>Selector de etiqueta</strong> → Aplica estilos a todas las etiquetas del mismo tipo
+                </li>
+                <li>
+                    <strong>Selector de clase</strong> → Permite reutilizar estilos en varios elementos
+                </li>
+                <li>
+                    <strong>Selector de ID</strong> → Se usa para un elemento único en la página
+                </li>
+            </ul>
+        </div>
+
+        <!-- Ejemplos de selectores -->
+        <div class="code-example">
+<pre><code>/* Selector de etiqueta */
+p {
+  color: #333;
+}
+
+/* Selector de clase */
+.tarjeta {
+  background-color: #f5f7fa;
+  padding: 20px;
+}
+
+/* Selector de ID */
+#principal {
+  max-width: 800px;
+}</code></pre>
+        </div>
+
+        <!-- COLORES -->
+        <!-- Explicación de formatos de color -->
+        <h3 style="margin-top: 3rem; color: #1e3c72;">
+            Colores en CSS
+        </h3>
+
+        <p>
+            CSS ofrece varias formas de definir colores.
+            Las más comunes son los nombres predefinidos, los valores hexadecimales y el formato RGB.
+        </p>
+
+        <div class="code-example">
+<pre><code>h1 {
+  color: purple;
+}
+
+p {
+  color: #555;
+}
+
+button {
+  background-color: rgb(30, 60, 114);
+}</code></pre>
+        </div>
+
+        <!-- TIPOGRAFÍA -->
+        <!-- Control del texto -->
+        <h3 style="margin-top: 3rem; color: #1e3c72;">
+            Texto y tipografía
+        </h3>
+
+        <p>
+            CSS permite controlar cómo se ve el texto: tipo de letra, tamaño,
+            separación entre líneas y legibilidad general.
+        </p>
+
+        <div class="code-example">
+<pre><code>body {
+  font-family: Arial, sans-serif;
+}
+
+h1 {
+  font-size: 2.5rem;
+}
+
+p {
+  line-height: 1.6;
+}</code></pre>
+        </div>
+
+        <!-- ESPACIADO -->
+        <!-- Modelo de caja -->
+        <h3 style="margin-top: 3rem; color: #1e3c72;">
+            Espaciado y modelo de caja
+        </h3>
+
+        <p>
+            En CSS, todos los elementos se comportan como cajas.
+            Controlar márgenes, relleno y bordes es esencial para organizar el diseño.
+        </p>
+
+        <div class="code-example">
+<pre><code>.tarjeta {
+  margin: 20px;
+  padding: 20px;
+  border-radius: 12px;
+}</code></pre>
+        </div>
+
+        <!-- FLEXBOX -->
+        <!-- Sistema de layout moderno -->
+        <h3 style="margin-top: 3rem; color: #1e3c72;">
+            Flexbox (layout moderno)
+        </h3>
+
+        <p>
+            Flexbox es un sistema de diseño que facilita la alineación y distribución
+            de elementos dentro de un contenedor.
+        </p>
+
+        <div class="code-example">
+<pre><code>.contenedor {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}</code></pre>
+        </div>
+
+        <!-- SOMBRAS -->
+        <!-- Efectos visuales -->
+        <h3 style="margin-top: 3rem; color: #1e3c72;">
+            Sombras y efectos
+        </h3>
+
+        <p>
+            Las sombras ayudan a dar profundidad y jerarquía visual a los elementos.
+        </p>
+
+        <div class="code-example">
+<pre><code>.tarjeta {
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}</code></pre>
+        </div>
+
+        <!-- EJERCICIO -->
+        <!-- Práctica final -->
+        <h3 style="margin-top: 3rem; color: #1e3c72;">
+            Ejercicio final
+        </h3>
+
+        <div class="card">
+            <p>
+                Diseña una tarjeta de presentación aplicando los conceptos aprendidos en esta sección.
+            </p>
+            <ul>
+                <li>Fondo blanco</li>
+                <li>Texto centrado</li>
+                <li>Tipografía moderna</li>
+                <li>Bordes redondeados</li>
+                <li>Sombra suave</li>
+            </ul>
+            <p>
+                Este ejercicio permite practicar sintaxis, selectores, tipografía,
+                espaciado y efectos visuales.
+            </p>
+        </div>
+
+        <!-- Solución de ejemplo -->
+        <div class="code-example">
+<pre><code>.tarjeta {
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 16px;
+  text-align: center;
+  font-family: Arial, sans-serif;
+  box-shadow: 0 15px 30px rgba(0,0,0,0.12);
+}</code></pre>
+        </div>
+
+    </div>
+</div>
+
+
+
+    <!-- WORKSPACE DE EJERCICIOS -->
+    <div class="exercise-workspace" id="workspace">
+        <div class="workspace-container">
+            <div class="workspace-header">
+                <h2 id="workspaceTitle"><i class="fas fa-code"></i> Ejercicio</h2>
+                <button class="btn-close" onclick="closeWorkspace()"><i class="fas fa-times"></i> Cerrar</button>
+            </div>
+            <div class="workspace-body">
+                <div class="editor-panel">
+                    <div class="editor-tabs">
+                        <button class="editor-tab active" onclick="switchTab('html')"><i class="fab fa-html5"></i> HTML</button>
+                        <button class="editor-tab" onclick="switchTab('css')"><i class="fab fa-css3-alt"></i> CSS</button>
+                    </div>
+                    <div class="editor-content active" id="htmlEditor">
+                        <textarea class="code-editor" id="htmlCode" placeholder="Escribe tu código HTML aquí..."></textarea>
+                    </div>
+                    <div class="editor-content" id="cssEditor">
+                        <textarea class="code-editor" id="cssCode" placeholder="Escribe tu código CSS aquí..."></textarea>
+                    </div>
+                </div>
+                <div class="preview-panel">
+                    <div class="preview-header">
+                        <h3><i class="fas fa-eye"></i> Vista Previa</h3>
+                        <button class="btn-check" onclick="checkExercise()"><i class="fas fa-check-circle"></i> Verificar Solución</button>
+                    </div>
+                    <div class="preview-frame" id="previewFrame"></div>
+                    <div class="feedback-panel" id="feedbackPanel"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+ 
+
+
+
+<footer>
+    <p>&copy; 2026 HTML & CSS Academy. Aprende desarrollo web profesional.</p>
+    <p style="margin-top: 0.5rem; opacity: 0.8;">
+        Programming Academy — By <strong>PowerFenix</strong>
+    </p>
+</footer>
+
+
+    <script src="status-monitor.js"></script>
+    <script>
+
+        
+
+const exercises = [
+    {
+        id: 1,
+        title: 'Tu Primera Página',
+        icon: 'fa-pencil-alt',
+        description: 'Crea una página HTML con un encabezado h1, tres párrafos y aplica estilos CSS.',
+        initialHTML: '<!DOCTYPE html>\n<html lang="es">\n<head>\n  <meta charset="UTF-8">\n  <title>Mi Primera Página</title>\n</head>\n<body>\n  <!-- Escribe tu código aquí -->\n  \n</body>\n</html>',
+        initialCSS: '/* Escribe tus estilos aquí */\n\nbody {\n  \n}',
+        validation: function(html, css) {
+            const hasH1 = /<h1[^>]*>.*<\/h1>/i.test(html);
+            const hasParagraphs = (html.match(/<p[^>]*>.*<\/p>/gi) || []).length >= 3;
+            const hasBodyStyles = /body\s*{[^}]+}/i.test(css);
+            
+            if (!hasH1) return { success: false, message: 'Falta el encabezado <h1>. Añade un título a tu página.' };
+            if (!hasParagraphs) return { success: false, message: 'Necesitas al menos 3 párrafos <p>. Actualmente tienes ' + (html.match(/<p[^>]*>.*<\/p>/gi) || []).length };
+            if (!hasBodyStyles) return { success: false, message: 'Añade estilos CSS para el body (color, background-color, etc.)' };
+            
+            return { success: true, message: '¡Excelente! Has completado tu primera página web con estilos.' };
+        }
+    },
+    {
+        id: 2,
+        title: 'Tarjetas de Producto',
+        icon: 'fa-box',
+        description: 'Diseña 3 tarjetas de producto con título, descripción y precio usando Flexbox.',
+        initialHTML: '<!DOCTYPE html>\n<html lang="es">\n<head>\n  <meta charset="UTF-8">\n  <title>Productos</title>\n</head>\n<body>\n  <div class="container">\n    <!-- Crea 3 tarjetas aquí con clase "card" -->\n    \n  </div>\n</body>\n</html>',
+        initialCSS: '/* Usa Flexbox para alinear las tarjetas */\n\n.container {\n  display: flex;\n  gap: 20px;\n}\n\n.card {\n  /* Estilos de la tarjeta */\n  \n}',
+        validation: function(html, css) {
+            const cardCount = (html.match(/class=["']card["']/gi) || []).length;
+            const hasFlex = /display\s*:\s*flex/i.test(css);
+            const hasH3 = (html.match(/<h3[^>]*>.*<\/h3>/gi) || []).length >= 3;
+            
+            if (cardCount < 3) return { success: false, message: 'Necesitas 3 elementos con clase "card". Actualmente tienes ' + cardCount };
+            if (!hasFlex) return { success: false, message: 'Usa display: flex en el contenedor para alinear las tarjetas' };
+            if (!hasH3) return { success: false, message: 'Cada tarjeta debe tener un título <h3>' };
+            
+            return { success: true, message: '¡Perfecto! Dominas Flexbox y la creación de componentes.' };
+        }
+    },
+    {
+        id: 3,
+        title: 'Menú de Navegación',
+        icon: 'fa-bars',
+        description: 'Crea un menú horizontal con 5 enlaces y añade efectos hover.',
+        initialHTML: '<!DOCTYPE html>\n<html lang="es">\n<head>\n  <meta charset="UTF-8">\n  <title>Navegación</title>\n</head>\n<body>\n  <nav>\n    <ul>\n      <!-- Añade 5 enlaces aquí -->\n      \n    </ul>\n  </nav>\n</body>\n</html>',
+        initialCSS: '/* Estilos del menú */\n\nnav ul {\n  list-style: none;\n  display: flex;\n}\n\nnav a {\n  /* Estilos de los enlaces */\n  \n}\n\nnav a:hover {\n  /* Efecto hover */\n  \n}',
+        validation: function(html, css) {
+            const linkCount = (html.match(/<a[^>]*>.*<\/a>/gi) || []).length;
+            const hasFlex = /display\s*:\s*flex/i.test(css);
+            const hasHover = /:hover/i.test(css);
+            
+            if (linkCount < 5) return { success: false, message: 'El menú debe tener al menos 5 enlaces. Actualmente tiene ' + linkCount };
+            if (!hasFlex) return { success: false, message: 'Usa display: flex para hacer el menú horizontal' };
+            if (!hasHover) return { success: false, message: 'Añade efectos :hover a los enlaces del menú' };
+            
+            return { success: true, message: '¡Genial! Has creado un menú de navegación profesional.' };
+        }
+    },
+    {
+        id: 4,
+        title: 'Formulario de Contacto',
+        icon: 'fa-envelope',
+        description: 'Crea un formulario con campos de nombre, email, mensaje y botón de envío.',
+        initialHTML: '<!DOCTYPE html>\n<html lang="es">\n<head>\n  <meta charset="UTF-8">\n  <title>Contacto</title>\n</head>\n<body>\n  <form>\n    <!-- Añade los campos del formulario -->\n    \n  </form>\n</body>\n</html>',
+        initialCSS: '/* Estilos del formulario */\n\nform {\n  max-width: 500px;\n  margin: 2rem auto;\n  padding: 2rem;\n}\n\ninput, textarea {\n  /* Estilos de los campos */\n  \n}\n\nbutton {\n  /* Estilos del botón */\n  \n}',
+        validation: function(html, css) {
+            const hasForm = /<form[^>]*>.*<\/form>/is.test(html);
+            const hasInput = /<input/i.test(html);
+            const hasTextarea = /<textarea/i.test(html);
+            const hasButton = /<button/i.test(html);
+            const hasInputStyles = /input[^{]*{[^}]+}/i.test(css);
+            
+            if (!hasForm) return { success: false, message: 'Necesitas crear un elemento <form>' };
+            if (!hasInput) return { success: false, message: 'Añade campos <input> para nombre y email' };
+            if (!hasTextarea) return { success: false, message: 'Añade un <textarea> para el mensaje' };
+            if (!hasButton) return { success: false, message: 'Añade un <button> para enviar el formulario' };
+            if (!hasInputStyles) return { success: false, message: 'Añade estilos CSS para los campos input' };
+            
+            return { success: true, message: '¡Excelente! Tu formulario está completo y con estilo.' };
+        }
+    },
+    {
+        id: 5,
+        title: 'Galería con CSS Grid',
+        icon: 'fa-images',
+        description: 'Crea una galería responsive con 6 imágenes usando CSS Grid.',
+        initialHTML: '<!DOCTYPE html>\n<html lang="es">\n<head>\n  <meta charset="UTF-8">\n  <title>Galería</title>\n</head>\n<body>\n  <div class="gallery">\n    <!-- Añade 6 divs con clase "image" -->\n    <!-- Usa background-color para simular imágenes -->\n    \n  </div>\n</body>\n</html>',
+        initialCSS: '/* Usa CSS Grid */\n\n.gallery {\n  display: grid;\n  grid-template-columns: repeat(3, 1fr);\n  gap: 1rem;\n}\n\n.image {\n  height: 200px;\n  /* Añade colores de fondo para simular imágenes */\n}\n\n@media (max-width: 768px) {\n  /* Hazlo responsive */\n  \n}',
+        validation: function(html, css) {
+            const imageCount = (html.match(/class=["']image["']/gi) || []).length;
+            const hasGrid = /display\s*:\s*grid/i.test(css);
+            const hasMediaQuery = /@media/i.test(css);
+            const hasGridColumns = /grid-template-columns/i.test(css);
+            
+            if (imageCount < 6) return { success: false, message: 'Necesitas 6 elementos con clase "image". Actualmente tienes ' + imageCount };
+            if (!hasGrid) return { success: false, message: 'Usa display: grid en la galería' };
+            if (!hasGridColumns) return { success: false, message: 'Define grid-template-columns para organizar las imágenes' };
+            if (!hasMediaQuery) return { success: false, message: 'Añade @media query para hacer la galería responsive' };
+            
+            return { success: true, message: '¡Increíble! Dominas CSS Grid y diseño responsive.' };
+        }
+        
+        
+    }
+];
+
+
+
+let currentExercise = null;
+let completedExercises = [];
+
+
+function renderExercises() {
+    const exerciseList = document.getElementById('exerciseList');
+    if (!exerciseList) return;
+    
+    exerciseList.innerHTML = '';
+    
+    exercises.forEach(ex => {
+        const card = document.createElement('div');
+        card.className = 'exercise-card';
+        card.innerHTML = `
+            <div class="exercise-header">
+                <h3><i class="fas ${ex.icon}"></i> Ejercicio ${ex.id}: ${ex.title}</h3>
+                <div class="exercise-status">
+                    <span class="status-badge ${completedExercises.includes(ex.id) ? 'completed' : 'pending'}" id="status-${ex.id}">
+                        ${completedExercises.includes(ex.id) ? '✓ Completado' : 'Pendiente'}
+                    </span>
+                    <button class="btn-start" onclick="openExercise(${ex.id})">
+                        <i class="fas fa-play"></i> Empezar
+                    </button>
+                </div>
+            </div>
+            <p>${ex.description}</p>
+        `;
+        exerciseList.appendChild(card);
+    });
+}
+
+
+function openExercise(id) {
+    currentExercise = exercises.find(ex => ex.id === id);
+    if (!currentExercise) return;
+
+    document.getElementById('workspaceTitle').innerHTML = `<i class="fas ${currentExercise.icon}"></i> Ejercicio ${currentExercise.id}: ${currentExercise.title}`;
+    document.getElementById('htmlCode').value = currentExercise.initialHTML;
+    document.getElementById('cssCode').value = currentExercise.initialCSS;
+    document.getElementById('feedbackPanel').innerHTML = `
+        <div class="feedback info">
+            <i class="fas fa-info-circle"></i>
+            <span>${currentExercise.description}</span>
+        </div>
+    `;
+    
+    updatePreview();
+    document.getElementById('workspace').classList.add('active');
+}
+
+
+function closeWorkspace() {
+    document.getElementById('workspace').classList.remove('active');
+    currentExercise = null;
+}
+
+
+function switchTab(tab) {
+    document.querySelectorAll('.editor-tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.editor-content').forEach(c => c.classList.remove('active'));
+    
+    if (tab === 'html') {
+        document.querySelector('.editor-tab:nth-child(1)').classList.add('active');
+        document.getElementById('htmlEditor').classList.add('active');
+    } else {
+        document.querySelector('.editor-tab:nth-child(2)').classList.add('active');
+        document.getElementById('cssEditor').classList.add('active');
+    }
+}
+
+
+function isRealHTML(html) {
+    const doc = new DOMParser().parseFromString(html, 'text/html');
+    return doc.body.children.length > 0;
+}
+
+function updatePreview() {
+    const html = document.getElementById('htmlCode').value;
+    const css = document.getElementById('cssCode').value;
+    const preview = document.getElementById('previewFrame');
+
+    if (!isRealHTML(html)) {
+        preview.innerHTML = `
+            <div style="padding: 2rem; color: #888; text-align: center; font-family: Arial;">
+                ⚠️ Escribe código HTML real para ver la vista previa
+            </div>
+        `;
+        return;
+    }
+
+
+    const iframe = document.createElement('iframe');
+    iframe.style.width = '100%';
+    iframe.style.height = '100%';
+    iframe.style.border = 'none';
+    
+    preview.innerHTML = '';
+    preview.appendChild(iframe);
+    
+    const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+    
+ 
+    const fullHTML = `
+        <!DOCTYPE html>
+        <html>
+        <head>
+            <meta charset="UTF-8">
+            <style>${css}</style>
+        </head>
+        <body>
+            ${html.replace(/<!DOCTYPE html>/i, '')
+                   .replace(/<html[^>]*>/i, '')
+                   .replace(/<\/html>/i, '')
+                   .replace(/<head>[\s\S]*?<\/head>/i, '')
+                   .replace(/<body[^>]*>/i, '')
+                   .replace(/<\/body>/i, '')}
+        </body>
+        </html>
+    `;
+    
+    iframeDoc.open();
+    iframeDoc.write(fullHTML);
+    iframeDoc.close();
+}
+
+
+function checkExercise() {
+    if (!currentExercise) return;
+    
+    const html = document.getElementById('htmlCode').value;
+    const css = document.getElementById('cssCode').value;
+    const result = currentExercise.validation(html, css);
+    
+    const feedbackPanel = document.getElementById('feedbackPanel');
+    
+    if (result.success) {
+        feedbackPanel.innerHTML = `
+            <div class="feedback success">
+                <i class="fas fa-check-circle"></i>
+                <span>${result.message}</span>
+            </div>
+        `;
+        
+        if (!completedExercises.includes(currentExercise.id)) {
+            completedExercises.push(currentExercise.id);
+            const statusBadge = document.getElementById(`status-${currentExercise.id}`);
+            if (statusBadge) {
+                statusBadge.className = 'status-badge completed';
+                statusBadge.textContent = '✓ Completado';
+            }
+            const completedCount = document.getElementById('completedCount');
+            if (completedCount) {
+                completedCount.textContent = completedExercises.length;
+            }
+        }
+    } else {
+        feedbackPanel.innerHTML = `
+            <div class="feedback error">
+                <i class="fas fa-times-circle"></i>
+                <span>${result.message}</span>
+            </div>
+        `;
+    }
+}
+
+
+function showSection(sectionId) {
+    const sections = document.querySelectorAll('.section');
+    sections.forEach(section => {
+        section.classList.remove('active');
+    });
+    const targetSection = document.getElementById(sectionId);
+    if (targetSection) {
+        targetSection.classList.add('active');
+    }
+    
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+}
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    renderExercises();
+    
+    const htmlCode = document.getElementById('htmlCode');
+    const cssCode = document.getElementById('cssCode');
+    
+    if (htmlCode) {
+        htmlCode.addEventListener('input', updatePreview);
+    }
+    if (cssCode) {
+        cssCode.addEventListener('input', updatePreview);
+    }
+});
+
+
+    </script>
+
+    <script>
+
+
+
+document.addEventListener('contextmenu', function(e) {
+    e.preventDefault();
+    return false;
+});
+
+
+document.addEventListener('keydown', function(e) {
+
+    if (e.keyCode === 123) {
+        e.preventDefault();
+        return false;
+    }
+
+    if (e.ctrlKey && e.shiftKey && e.keyCode === 73) {
+        e.preventDefault();
+        return false;
+    }
+
+    if (e.ctrlKey && e.shiftKey && e.keyCode === 74) {
+        e.preventDefault();
+        return false;
+    }
+
+    if (e.ctrlKey && e.keyCode === 85) {
+        e.preventDefault();
+        return false;
+    }
+
+    if (e.ctrlKey && e.shiftKey && e.keyCode === 67) {
+        e.preventDefault();
+        return false;
+    }
+
+    if (e.ctrlKey && e.keyCode === 83) {
+        e.preventDefault();
+        return false;
+    }
+});
+
+
+let devtoolsOpen = false;
+const threshold = 160;
+
+const detectDevTools = () => {
+    const widthThreshold = window.outerWidth - window.innerWidth > threshold;
+    const heightThreshold = window.outerHeight - window.innerHeight > threshold;
+    
+    if (widthThreshold || heightThreshold) {
+        if (!devtoolsOpen) {
+            devtoolsOpen = true;
+            document.body.innerHTML = '<h1 style="text-align:center; margin-top:20%; color:#d63031;">⚠️ Acceso no autorizado detectado</h1>';
+        }
+    } else {
+        devtoolsOpen = false;
+    }
+};
+
+setInterval(detectDevTools, 500);
+
+
+setInterval(function() {
+    const before = new Date();
+    debugger;
+    const after = new Date();
+    if (after - before > 100) {
+        document.body.innerHTML = '<h1 style="text-align:center; margin-top:20%; color:#d63031;">⚠️ Consola de desarrollador detectada</h1>';
+    }
+}, 1000);
+
+
+document.addEventListener('selectstart', function(e) {
+    e.preventDefault();
+    return false;
+});
+
+
+document.addEventListener('copy', function(e) {
+    e.preventDefault();
+    return false;
+});
+
+
+document.addEventListener('dragstart', function(e) {
+    e.preventDefault();
+    return false;
+});
+
+
+document.addEventListener('keydown', function(e) {
+    if (e.ctrlKey && e.keyCode === 65) {
+        e.preventDefault();
+        return false;
+    }
+});
+
+
+setInterval(function() {
+    console.clear();
+}, 100);
+
+
+console.log = function() {};
+console.warn = function() {};
+console.error = function() {};
+console.info = function() {};
+console.debug = function() {};
+
+
+(function() {
+    const element = new Image();
+    Object.defineProperty(element, 'id', {
+        get: function() {
+            document.body.innerHTML = '<h1 style="text-align:center; margin-top:20%; color:#d63031;">⚠️ Inspección detectada</h1>';
+            throw new Error('DevTools detectadas');
+        }
+    });
+    console.log(element);
+})();
+
+
+window.addEventListener('beforeprint', function(e) {
+    e.preventDefault();
+    alert('La impresión está deshabilitada');
+    return false;
+});
+
+
+document.addEventListener('keydown', function(e) {
+
+    if (e.ctrlKey && e.keyCode === 80) {
+        e.preventDefault();
+        return false;
+    }
+});
+
+
+if (window.top !== window.self) {
+    window.top.location = window.self.location;
+}
+
+
+setTimeout(function() {
+    const mensaje = '%c¡ALTO!';
+    const estilo = 'color: red; font-size: 50px; font-weight: bold; text-shadow: 2px 2px 4px black;';
+    console.log(mensaje, estilo);
+    console.log('%cEsta es una función del navegador destinada a desarrolladores.', 'font-size: 20px;');
+    console.log('%cSi alguien te dijo que copiaras y pegaras algo aquí, es un fraude.', 'font-size: 18px; color: orange;');
+}, 1000);
+
+</script>
+</body>
+</html> 
